@@ -44,7 +44,7 @@ PreCommit:
         Hadolint:
                 install_command: 'sudo apt install -y haskell-stack; git clone https://github.com/hadolint/hadolint; cd hadolint; stack install'
                 required: false
-                enabled: true
+                enabled: false
                 include:
                         - 'Dockerfile'
 
