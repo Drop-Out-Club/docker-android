@@ -1,0 +1,7 @@
+---
+frontend:
+
+server:
+
+linting:
+        - .overcommit.yml
