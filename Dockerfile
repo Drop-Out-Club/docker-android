@@ -15,12 +15,8 @@ WORKDIR /root
 #==================
 # General Packages
 #------------------
-# xterm
-#   Terminal emulator
 # supervisor
 #   Process manager
-# socat
-#   Port forwarder
 #------------------
 #  NoVNC Packages
 #------------------
@@ -29,19 +25,10 @@ WORKDIR /root
 #       We use package from ubuntu 18.10 to fix crashing issue
 # openbox
 #   Windows manager
-# menu
-#   Debian menu
 # python-numpy
 #   Numpy, For faster performance: https://github.com/novnc/websockify/issues/77
 # net-tools
 #   Netstat
-#------------------
-#  Video Recording
-#------------------
-# ffmpeg
-#   Video recorder
-# jq
-#   Sed for JSON data
 #------------------
 #    KVM Package
 # for emulator x86
@@ -52,16 +39,11 @@ WORKDIR /root
 # ubuntu-vm-builder
 # bridge-utils
 #==================
-COPY configs/x11vnc.pref /etc/apt/preferences.d/
 RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     supervisor \
-    socat \
     openbox \
-    menu \
     python-numpy \
     net-tools \
-    ffmpeg \
-    jq \
     qemu-kvm \
     libvirt-bin \
     ubuntu-vm-builder \
@@ -127,18 +109,13 @@ RUN wget -nv -O chrome.zip "https://chromedriver.storage.googleapis.com/${CHROME
 #RUN wget -nv -O google_play_store.apk "https://www.apklinker.com/wp-content/uploads/uploaded_apk/5b632b1164e31/com.android.vending_${GOOGLE_PLAY_STORE}-all-0-PR-206665793_81105000_MinAPI16_(armeabi,armeabi-v7a,mips,mips64,x86,x86_64)(240,320,480dpi)_apklinker.com.apk"
 
 #================================================
-# noVNC Default Configurations
+# VNC Default Configurations
 # These Configurations can be changed through -e
 #================================================
 ENV DISPLAY=:0 \
-    SCREEN=0 \
     SCREEN_WIDTH=1600 \
     SCREEN_HEIGHT=900 \
     SCREEN_DEPTH=24+32 \
-    LOCAL_PORT=5900 \
-    TARGET_PORT=6080 \
-    TIMEOUT=1 \
-    VIDEO_PATH=/tmp/video \
     LOG_PATH=/var/log/supervisor
 
 #================================================
