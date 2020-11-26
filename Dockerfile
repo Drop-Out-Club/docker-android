@@ -54,10 +54,8 @@ WORKDIR /root
 #==================
 COPY configs/x11vnc.pref /etc/apt/preferences.d/
 RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
-    xterm \
     supervisor \
     socat \
-    x11vnc \
     openbox \
     menu \
     python-numpy \
@@ -72,21 +70,14 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
  && rm -rf /var/lib/apt/lists/*
 
 #=======
-# noVNC
-# Use same commit id that docker-selenium uses
-# https://github.com/elgalu/docker-selenium/blob/236b861177bd2917d864e52291114b1f5e4540d7/Dockerfile#L412-L413
-#=======
-ENV NOVNC_SHA="b403cb92fb8de82d04f305b4f14fa978003890d7" \
-    WEBSOCKIFY_SHA="558a6439f14b0d85a31145541745e25c255d576b"
-RUN  wget -nv -O noVNC.zip "https://github.com/kanaka/noVNC/archive/${NOVNC_SHA}.zip" \
- && unzip -x noVNC.zip \
- && rm noVNC.zip  \
- && mv noVNC-${NOVNC_SHA} noVNC \
- && wget -nv -O websockify.zip "https://github.com/kanaka/websockify/archive/${WEBSOCKIFY_SHA}.zip" \
- && unzip -x websockify.zip \
- && mv websockify-${WEBSOCKIFY_SHA} ./noVNC/utils/websockify \
- && rm websockify.zip \
- && ln noVNC/vnc_auto.html noVNC/index.html
+# TigerVNC (xvnc)
+# TODO: Custom build tigerVNC so we can get an ARM build of it
+#========
+RUN wget -nv -O tigerVNC.tar.gz "https://bintray.com/tigervnc/stable/download_file?file_path=tigervnc-1.11.0.x86_64.tar.gz"
+RUN tar xf tigerVNC.tar.gz \
+ && cp -ar tigervnc-1.11.0.x86_64/* / \
+ && rm -rf tigervnc-1.11.0.x86_64 \
+ && rm tigerVNC.tar.gz
 
 #======================
 # Install SDK packages
@@ -169,14 +160,14 @@ ENV QTWEBENGINE_DISABLE_SANDBOX=1
 #---------------
 # 4723
 #   Appium port
-# 6080
-#   noVNC port
 # 5554
 #   Emulator port
 # 5555
 #   ADB connection port
+# 5900
+#   Xvnc port
 #===============
-EXPOSE 4723 6080 5554 5555
+EXPOSE 4723 5554 5555 5900
 
 #======================
 # Add Emulator Devices
