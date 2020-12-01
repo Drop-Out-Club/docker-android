@@ -24,4 +24,4 @@
 `docker-compose up`
 
 ### Without docker-compose
-`docker run --privileged -d -p 6080:6080 -p 5554:5554 -p 5555:5555 -p 5900:5900 -e DEVICE="Samsung Galaxy S6" --name android-container xenum/docker-android-x86-10.0`
+`docker run --privileged -d -p 5554:5554 -p 5555:5555 -p 5900:5900 -e DEVICE="Nexus 5" --name android-container xenum/docker-android-x86-10.0`
