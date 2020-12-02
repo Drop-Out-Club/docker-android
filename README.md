@@ -15,8 +15,7 @@
 `docker-compose build`
 
 ### Without docker-compose
-#### Ubuntu and Ubuntu based Linux Distros
-`sudo apt install docker-compose && docker-compose build`
+`docker build --build-arg ANDROID_VERSION=11.0 --build-arg API_LEVEL=30 --build-arg CHROME_DRIVER=74.0.3729.6 --build-arg BROWSER=chrome --build-arg SYS_IMG=x86`
 
 ## Running
 
