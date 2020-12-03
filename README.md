@@ -15,7 +15,7 @@
 `docker-compose build`
 
 ### Without docker-compose
-`docker build --build-arg ANDROID_VERSION=11.0 --build-arg API_LEVEL=30 --build-arg CHROME_DRIVER=74.0.3729.6 --build-arg BROWSER=chrome --build-arg SYS_IMG=x86`
+`docker build --build-arg ANDROID_VERSION=10.0 --build-arg API_LEVEL=29 --build-arg CHROME_DRIVER=74.0.3729.6 --build-arg BROWSER=chrome --build-arg SYS_IMG=x86`
 
 ## Running
 

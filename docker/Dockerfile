@@ -48,6 +48,7 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     libvirt-bin \
     ubuntu-vm-builder \
     bridge-utils \
+    lzip \
  && apt-get clean all \
  && rm -rf /var/lib/apt/lists/*
 
@@ -74,6 +75,8 @@ ARG CHROME_DRIVER=2.40
 ARG GOOGLE_PLAY_SERVICE=12.8.74
 ARG GOOGLE_PLAY_STORE=11.0.50
 ARG APP_RELEASE_VERSION=1.5-p0
+ARG OPENGAPPS_PATH=/root/open_gapps.zip
+ARG LOCAL_OPENGAPPS_PATH=./open_gapps.zip
 ENV ANDROID_VERSION=$ANDROID_VERSION \
     API_LEVEL=$API_LEVEL \
     PROCESSOR=$PROCESSOR \
@@ -88,7 +91,8 @@ ENV ANDROID_VERSION=$ANDROID_VERSION \
     GA_TRACKING_ID=UA-251807474-1 \
     GA_API_VERSION="1" \
     APP_RELEASE_VERSION=$APP_RELEASE_VERSION \
-    APP_TYPE=Emulator
+    APP_TYPE=Emulator \
+    OPENGAPPS_PATH=$OPENGAPPS_PATH
 ENV PATH ${PATH}:${ANDROID_HOME}/build-tools
 
 RUN yes | sdkmanager --licenses && \
@@ -125,6 +129,11 @@ ENV DISPLAY=:0 \
 #================================================
 COPY src/rc.xml /etc/xdg/openbox/rc.xml
 
+#============
+# Open GApps
+#============
+COPY $LOCAL_OPENGAPPS_PATH $OPENGAPPS_PATH
+
 #======================
 # Workarounds
 #======================
@@ -157,6 +166,11 @@ COPY devices /root/devices
 COPY src /root/src
 COPY supervisord.conf /root/
 RUN chmod -R +x /root/src && chmod +x /root/supervisord.conf
+
+#================
+# Install system images
+#================
+#COPY system-images /root/
 
 HEALTHCHECK --interval=2s --timeout=40s --retries=1 \
     CMD timeout 40 adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done'
