@@ -49,18 +49,9 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     ubuntu-vm-builder \
     bridge-utils \
     lzip \
+    tigervnc-standalone-server \
  && apt-get clean all \
  && rm -rf /var/lib/apt/lists/*
-
-#=======
-# TigerVNC (xvnc)
-# TODO: Custom build tigerVNC so we can get an ARM build of it
-#========
-RUN wget -nv -O tigerVNC.tar.gz "https://bintray.com/tigervnc/stable/download_file?file_path=tigervnc-1.11.0.x86_64.tar.gz"
-RUN tar xf tigerVNC.tar.gz \
- && cp -ar tigervnc-1.11.0.x86_64/* / \
- && rm -rf tigervnc-1.11.0.x86_64 \
- && rm tigerVNC.tar.gz
 
 #======================
 # Install SDK packages
