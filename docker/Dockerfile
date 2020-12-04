@@ -49,9 +49,15 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     ubuntu-vm-builder \
     bridge-utils \
     lzip \
-    tigervnc-standalone-server \
  && apt-get clean all \
  && rm -rf /var/lib/apt/lists/*
+
+#===============
+# TurboVNC
+#===============
+RUN wget -nv -O turbovnc.deb "https://sourceforge.net/projects/turbovnc/files/2.2.5/turbovnc_2.2.5_amd64.deb/download"
+RUN dpkg -i turbovnc.deb
+
 
 #======================
 # Install SDK packages
