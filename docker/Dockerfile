@@ -49,6 +49,7 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     ubuntu-vm-builder \
     bridge-utils \
     lzip \
+    openssh-server \
  && apt-get clean all \
  && rm -rf /var/lib/apt/lists/*
 
@@ -141,21 +142,24 @@ ENV QTWEBENGINE_DISABLE_SANDBOX=1
 #===============
 # Expose Ports
 #---------------
-# 4723
-#   Appium port
 # 5554
 #   Emulator port
 # 5555
 #   ADB connection port
-# 5900
-#   Xvnc port
+# 8200
+#   SSH Server
 #===============
-EXPOSE 4723 5554 5555 5900
+EXPOSE 5554 5555 8200
 
 #======================
 # Add Emulator Devices
 #======================
 COPY devices /root/devices
+
+#===================
+# SSHD Config
+#===================
+COPY config/sshd_config /etc/ssh/
 
 #===================
 # Run docker-appium
