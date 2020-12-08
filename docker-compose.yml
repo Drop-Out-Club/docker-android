@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   emulator:
-    image: xenum/docker-android-x86-10.0
+    image: xenum/docker-android-x86-8.1
     build:
       context: .
       dockerfile: ./docker/Dockerfile
@@ -13,7 +13,7 @@ services:
         - SYS_IMG=x86
         - BROWSER=chrome
       cache_from:
-        - xenum/docker-android-x86-10.0:latest
+        - xenum/docker-android-x86-8.1:latest
         - appium/appium:1.18.0-p0
     network_mode: bridge
     privileged: true
