@@ -162,6 +162,11 @@ COPY devices /root/devices
 COPY config/sshd_config /etc/ssh/
 
 #===================
+# BashRC
+#===================
+COPY config/bashrc /root/.bashrc
+
+#===================
 # Run docker-appium
 #===================
 COPY src /root/src
