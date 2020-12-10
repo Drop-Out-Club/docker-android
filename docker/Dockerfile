@@ -142,14 +142,10 @@ ENV QTWEBENGINE_DISABLE_SANDBOX=1
 #===============
 # Expose Ports
 #---------------
-# 5554
-#   Emulator port
-# 5555
-#   ADB connection port
 # 8200
 #   SSH Server
 #===============
-EXPOSE 5554 5555 8200
+EXPOSE 8200
 
 #======================
 # Add Emulator Devices
