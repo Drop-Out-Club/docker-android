@@ -158,16 +158,16 @@ COPY devices /root/devices
 COPY config/sshd_config /etc/ssh/
 
 #===================
-# BashRC
-#===================
-COPY config/bashrc /root/.bashrc
-
-#===================
 # Run docker-appium
 #===================
 COPY src /root/src
 COPY supervisord.conf /root/
 RUN chmod -R +x /root/src && chmod +x /root/supervisord.conf
+
+#=================
+# Set system shell to custom "shell"
+#=================
+RUN chsh root -s /root/src/adb_emu.sh
 
 #================
 # Install system images
