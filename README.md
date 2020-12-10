@@ -24,4 +24,4 @@ You must have a folder called `ssh_keys` in the same directory as `docker-compos
 `docker-compose up`
 
 ### Without docker-compose
-`docker run --privileged -d -p 5554:5554 -p 5555:5555 -p 5900:5900 -e DEVICE="Nexus 5" --name android-container xenum/docker-android-x86-10.0`
+`docker run --privileged -d -p 8200:8200 -e DEVICE="Nexus 5" --name android-container xenum/docker-android-x86-10.0`
