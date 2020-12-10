@@ -125,7 +125,7 @@ ENV DISPLAY=:0 \
 # Update the openbox configuration files to:
 #   + Use a single virtual desktop to prevent accidentally switching 
 #================================================
-COPY src/rc.xml /etc/xdg/openbox/rc.xml
+COPY config/rc.xml /etc/xdg/openbox/rc.xml
 
 #============
 # Open GApps
