@@ -19,8 +19,6 @@ services:
     privileged: true
     ports:
       - "8200:8200"
-    volumes:
-      - "./ssh_keys:/root/.ssh"
     environment:
       - DEVICE=Nexus 5 
     container_name: android-container

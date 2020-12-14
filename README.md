@@ -18,7 +18,6 @@
 `docker build --build-arg ANDROID_VERSION=10.0 --build-arg API_LEVEL=29 --build-arg CHROME_DRIVER=74.0.3729.6 --build-arg BROWSER=chrome --build-arg SYS_IMG=x86`
 
 ## Running
-You must have a folder called `ssh_keys` in the same directory as `docker-compose.yml` that has permissions `600` and owner `root:root`. In order to be able to connect via SSH there must be a file called `ssh_keys/authorized_keys` that contains the public key of the key you want to use to connect via SSH.
 
 ### With docker-compose
 `docker-compose up`

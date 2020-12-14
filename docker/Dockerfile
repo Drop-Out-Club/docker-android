@@ -169,6 +169,11 @@ RUN chmod -R +x /root/src && chmod +x /root/supervisord.conf
 #=================
 RUN chsh root -s /root/src/adb_emu.sh
 
+#===============
+# Make empty folder to install SSH access key to
+#================
+RUN mkdir /root/.ssh
+
 #================
 # Install system images
 #================
