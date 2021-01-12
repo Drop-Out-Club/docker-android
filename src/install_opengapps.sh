@@ -7,6 +7,11 @@
 # lzip
 # adb
 
+# Check if device is new. If it's not new, we can safely assume opengapps has already been installed and exit
+if [[ -f /root/android_emulator/config.ini ]]; then
+	exit
+if
+
 OPENGAPPS=$1
 
 mkdir tmp || exit 1
