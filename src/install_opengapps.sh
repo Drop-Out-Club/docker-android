@@ -9,8 +9,9 @@
 
 # Check if device is new. If it's not new, we can safely assume opengapps has already been installed and exit
 if [[ -f /root/android_emulator/config.ini ]]; then
+	echo 'OpenGapps (likely) already installed. Exiting.'
 	exit
-if
+fi
 
 OPENGAPPS=$1
 
@@ -19,7 +20,11 @@ cd tmp
 
 #Prepare Open GAPPS
 unzip $OPENGAPPS
-tar xf Core/vending-*.tar.lz
+
+for f in Core/*.tar.lz; do
+	echo Extracting $f
+	tar xf $f
+done
 
 
 #Wait for device to connect
@@ -38,7 +43,10 @@ adb root
 sleep 5
 adb remount
 
-adb push vending-*/nodpi/priv-app/Phonesky/Phonesky.apk /system/priv-app
+for f in **/*.adb; do
+	echo Installing $f
+	adb push $f /system/priv-app
+done
 
 #Restart emulator
 adb shell stop && adb shell start
