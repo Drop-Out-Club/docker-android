@@ -50,6 +50,7 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     bridge-utils \
     lzip \
     openssh-server \
+    pulseaudio \
  && apt-get clean all \
  && rm -rf /var/lib/apt/lists/*
 
@@ -156,6 +157,12 @@ COPY devices /root/devices
 # SSHD Config
 #===================
 COPY config/sshd_config /etc/ssh/
+
+#===================
+# Pulseaudio Config
+#===================
+#COPY config/default.pa /etc/pulse
+COPY config/pulse-client.conf /etc/pulse/client.conf
 
 #===================
 # Run docker-appium
