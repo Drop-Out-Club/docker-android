@@ -8,7 +8,7 @@
 # adb
 
 # Check if device is new. If it's not new, we can safely assume opengapps has already been installed and exit
-if [[ -f /root/android_emulator/config.ini ]]; then
+if [[ -f /root/android_emulator/gapps_installed ]]; then
 	echo 'OpenGapps (likely) already installed. Exiting.'
 	exit
 fi
@@ -21,11 +21,7 @@ cd tmp
 #Prepare Open GAPPS
 unzip $OPENGAPPS
 
-for f in Core/*.tar.lz; do
-	echo Extracting $f
-	tar xf $f
-done
-
+find Core -name '*.tar.lz' -exec tar xf '{}' \;
 
 #Wait for device to connect
 adb wait-for-device
@@ -43,13 +39,13 @@ adb root
 sleep 5
 adb remount
 
-for f in **/*.adb; do
-	echo Installing $f
-	adb push $f /system/priv-app
-done
+find . -name '*.apk' -exec adb push '{}' /system/priv-app \;
 
 #Restart emulator
 adb shell stop && adb shell start
 
 #Cleanup
 cd .. && rm -rf tmp
+
+# Mark that GApps has been installed
+touch /root/android_emulator/gapps_installed
