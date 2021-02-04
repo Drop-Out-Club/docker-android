@@ -7,22 +7,6 @@ parts {
       y 0
     }
   }
-  portrait {
-    background {
-      image port_back.png
-    }
-    onion {
-      image port_fore.png
-    }
-  }
-  landscape {
-    background {
-      image land_back.png
-    }
-    onion {
-      image land_fore.png
-    }
-  }
 }
 layouts {
   portrait {

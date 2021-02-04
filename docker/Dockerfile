@@ -50,6 +50,7 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     bridge-utils \
     lzip \
     openssh-server \
+    wmctrl \
  && apt-get clean all \
  && rm -rf /var/lib/apt/lists/*
 
@@ -115,8 +116,8 @@ RUN wget -nv -O chrome.zip "https://chromedriver.storage.googleapis.com/${CHROME
 # These Configurations can be changed through -e
 #================================================
 ENV DISPLAY=:0 \
-    SCREEN_WIDTH=1600 \
-    SCREEN_HEIGHT=900 \
+    SCREEN_WIDTH=1440 \
+    SCREEN_HEIGHT=2560 \
     SCREEN_DEPTH=24+32 \
     LOG_PATH=/var/log/supervisor
 
