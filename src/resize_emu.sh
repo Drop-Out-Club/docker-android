@@ -24,13 +24,21 @@ LOC_X=0
 LOC_Y=0
 WIDTH=$SCREEN_WIDTH
 HEIGHT=$SCREEN_HEIGHT
-if [[ "$(div $SCREEN_WIDTH/$SCREEN_HEIGHT)" == "0.5625" ]]; then #9:16
+
+# Note all 9:16 resolutions have the following offset: width+360xheight+640
+if [[ "$SCREEN_WIDTH" == "1440" && "$SCREEN_HEIGHT" == "2560" ]]; then #9:16 1080x1920
 	# These values were discovered by trial and error, and were only tested on a Smasung S5
 	# Also tested on Note 4 but with the emulator res set to 1080x1920 and there were visable borders
 	LOC_X=-150
 	LOC_Y=-200
 	WIDTH=$(( $SCREEN_WIDTH - 51 ))
 	HEIGHT=$(( $SCREEN_HEIGHT - 150 ))
+elif [[ "$SCREEN_WIDTH" == "1800" && "$SCREEN_HEIGHT" == "3200" ]]; then #9:16 1440x2560
+	# These values were discovered by trial and error, and were only tested on a Note 4
+	LOC_X=-190
+	LOC_Y=-260
+	WIDTH=$(( $SCREEN_WIDTH + 30 ))
+	HEIGHT=$(( $SCREEN_HEIGHT + 5 ))
 fi
 
 
@@ -40,4 +48,4 @@ wmctrl -r "Android Emulator - nexus_5_8.1:5554" -e 0,$LOC_X,$LOC_Y,$WIDTH,$HEIGH
 wmctrl -r "Emulator" -e 0,0,0,0,0
 
 # This is a hack to make sure the user can't accidently (or purposefully) resize or move the emulator window
-#while [[ true ]]; do wmctrl -r "Android Emulator - nexus_5_8.1:5554" -e 0,$LOC_X,$LOC_Y,$WIDTH,$HEIGHT; done
+while [[ true ]]; do wmctrl -r "Android Emulator - nexus_5_8.1:5554" -e 0,$LOC_X,$LOC_Y,$WIDTH,$HEIGHT; done
