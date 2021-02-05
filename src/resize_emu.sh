@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-# Function for floating point division
-div() {
-	awk "BEGIN { print "$*" }"; 
-}
-
 #Wait for device to connect
 adb wait-for-device
 
@@ -39,6 +34,14 @@ elif [[ "$SCREEN_WIDTH" == "1800" && "$SCREEN_HEIGHT" == "3200" ]]; then #9:16 1
 	LOC_Y=-260
 	WIDTH=$(( $SCREEN_WIDTH + 30 ))
 	HEIGHT=$(( $SCREEN_HEIGHT + 5 ))
+elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2280" ]]; then # 9:19 1080x2280
+	# These were discorverd by trial and error, and were only tested on a Pixel 4
+	# This isn't exact, but it's as close as I could get
+	# Also, the touch is slightly offset, but it's not very noticable except when using the navigation buttons
+	LOC_X=-140
+	LOC_Y=-105
+	WIDTH=$(( $SCREEN_WIDTH + 280 ))
+	HEIGHT=$(( $SCREEN_HEIGHT + 480 ))
 fi
 
 

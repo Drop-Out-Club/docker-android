@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Changes the resolution of the emulator (not the window, but the actual phone that's being emulated)
+if [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2280" ]]; then # 9:19 1080x2280
+	sed 's/height 1920/height 2280/g' /root/devices/skins/nexus_5/layout > /root/devices/skins/nexus_5/layout.new
+	mv /root/devices/skins/nexus_5/layout.new /root/devices/skins/nexus_5/layout
+fi
+
 types=($TYPES)
 echo "Available types: ${types[@]}"
 echo "Selected type of deployment: $TYPE, Template file: $TEMPLATE"
