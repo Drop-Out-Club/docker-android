@@ -34,6 +34,12 @@ elif [[ "$SCREEN_WIDTH" == "1800" && "$SCREEN_HEIGHT" == "3200" ]]; then #9:16 1
 	LOC_Y=-260
 	WIDTH=$(( $SCREEN_WIDTH + 30 ))
 	HEIGHT=$(( $SCREEN_HEIGHT + 5 ))
+elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "1920" ]]; then # 9:16 720x1280
+	# These values were discovered by trial and error, and were only tested on a Pantech Vega R3 IM-A850S (which is the same size as the IM-A850L)
+	LOC_X=-150
+	LOC_Y=-200
+	WIDTH=$(( $SCREEN_WIDTH + 910 ))
+	HEIGHT=$(( $SCREEN_HEIGHT + 1350 ))
 elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2280" ]]; then # 9:19 1080x2280
 	# These were discorverd by trial and error, and were only tested on a Pixel 4
 	# This isn't exact, but it's as close as I could get
