@@ -8,6 +8,9 @@ elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "1920" ]]; then # 9:16 
 	sed 's/height 1920/height 1280/g' /root/devices/skins/nexus_5/layout > /root/devices/skins/nexus_5/layout.new
 	sed 's/width 1080/width 720/g' /root/devices/skins/nexus_5/layout.new > /root/devices/skins/nexus_5/layout.new.new
 	mv /root/devices/skins/nexus_5/layout.new.new /root/devices/skins/nexus_5/layout
+elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2020" ]]; then # ?:?? 1080x2020
+	sed 's/height 1920/height 2020/g' /root/devices/skins/nexus_5/layout > /root/devices/skins/nexus_5/layout.new
+	mv /root/devices/skins/nexus_5/layout.new /root/devices/skins/nexus_5/layout
 fi
 
 types=($TYPES)

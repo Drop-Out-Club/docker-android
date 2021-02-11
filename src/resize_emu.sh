@@ -48,6 +48,12 @@ elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2280" ]]; then # 9:19 
 	LOC_Y=-105
 	WIDTH=$(( $SCREEN_WIDTH + 280 ))
 	HEIGHT=$(( $SCREEN_HEIGHT + 480 ))
+elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2020" ]]; then # ?:?? 1080x2020 (this is the size of a Samsung S10e, up to the camera hole)
+	# These were discorverd by trial and error, and were only tested on a Samsung S10e
+	LOC_X=-150
+	LOC_Y=-200
+	WIDTH=$(( $SCREEN_WIDTH + 295 ))
+	HEIGHT=$(( $SCREEN_HEIGHT + 490 ))
 fi
 
 
