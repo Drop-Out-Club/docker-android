@@ -40,15 +40,16 @@ elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "1920" ]]; then # 9:16 
 	LOC_Y=-200
 	WIDTH=$(( $SCREEN_WIDTH + 910 ))
 	HEIGHT=$(( $SCREEN_HEIGHT + 1350 ))
-elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2280" ]]; then # 9:19 1080x2280
+elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2236" ]]; then # 9:19 1080x2280 (usable space only on Pixel 4)
 	# These were discorverd by trial and error, and were only tested on a Pixel 4
 	# This isn't exact, but it's as close as I could get
+	# Stops right before the curve on the Pixel 4, so nothing get cut off
 	# Also, the touch is slightly offset, but it's not very noticable except when using the navigation buttons
-	LOC_X=-140
-	LOC_Y=-105
-	WIDTH=$(( $SCREEN_WIDTH + 280 ))
-	HEIGHT=$(( $SCREEN_HEIGHT + 480 ))
-elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2020" ]]; then # ?:?? 1080x2020 (this is the size of a Samsung S10e, up to the camera hole)
+	LOC_X=-145
+	LOC_Y=-180
+	WIDTH=$(( $SCREEN_WIDTH + 300 ))
+	HEIGHT=$(( $SCREEN_HEIGHT + 1400 ))
+elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2020" ]]; then # ?:?? 1080x2020 (9:19 1080x2280) (this is the size of a Samsung S10e, up to the camera hole)
 	# These were discorverd by trial and error, and were only tested on a Samsung S10e
 	LOC_X=-150
 	LOC_Y=-200
