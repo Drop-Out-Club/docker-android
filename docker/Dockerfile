@@ -51,6 +51,7 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     lzip \
     openssh-server \
     pulseaudio \
+    wmctrl \
  && apt-get clean all \
  && rm -rf /var/lib/apt/lists/*
 
@@ -85,7 +86,7 @@ ENV ANDROID_VERSION=$ANDROID_VERSION \
     CHROME_DRIVER=$CHROME_DRIVER \
     GOOGLE_PLAY_SERVICE=$GOOGLE_PLAY_SERVICE \
     GOOGLE_PLAY_STORE=$GOOGLE_PLAY_STORE \
-    GA=true \
+    GA=false \
     GA_ENDPOINT=https://www.google-analytics.com/collect \
     GA_TRACKING_ID=UA-251807474-1 \
     GA_API_VERSION="1" \
@@ -116,8 +117,8 @@ RUN wget -nv -O chrome.zip "https://chromedriver.storage.googleapis.com/${CHROME
 # These Configurations can be changed through -e
 #================================================
 ENV DISPLAY=:0 \
-    SCREEN_WIDTH=1600 \
-    SCREEN_HEIGHT=900 \
+    SCREEN_WIDTH=1440 \
+    SCREEN_HEIGHT=2560 \
     SCREEN_DEPTH=24+32 \
     LOG_PATH=/var/log/supervisor
 
