@@ -55,6 +55,12 @@ elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2020" ]]; then # ?:?? 
 	LOC_Y=-200
 	WIDTH=$(( $SCREEN_WIDTH + 295 ))
 	HEIGHT=$(( $SCREEN_HEIGHT + 490 ))
+elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "1620" ]]; then # 2:3 1080x1620
+	# These were discorverd by trial and error, and were only tested on a BlackBerry Keyone
+	LOC_X=-150
+	LOC_Y=-200
+	WIDTH=$(( $SCREEN_WIDTH + 500 ))
+	HEIGHT=$(( $SCREEN_HEIGHT + 800 ))
 fi
 
 
@@ -64,4 +70,4 @@ wmctrl -r "Android Emulator - nexus_5_8.1:5554" -e 0,$LOC_X,$LOC_Y,$WIDTH,$HEIGH
 wmctrl -r "Emulator" -e 0,0,0,0,0
 
 # This is a hack to make sure the user can't accidently (or purposefully) resize or move the emulator window
-while [[ true ]]; do wmctrl -r "Android Emulator - nexus_5_8.1:5554" -e 0,$LOC_X,$LOC_Y,$WIDTH,$HEIGHT; done
+#while [[ true ]]; do wmctrl -r "Android Emulator - nexus_5_8.1:5554" -e 0,$LOC_X,$LOC_Y,$WIDTH,$HEIGHT; done
