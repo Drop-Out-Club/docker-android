@@ -52,16 +52,14 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     openssh-server \
     pulseaudio \
     wmctrl \
-    tightvncserver \
-    xfonts-base \
  && apt-get clean all \
  && rm -rf /var/lib/apt/lists/*
 
 #===============
 # TurboVNC
 #===============
-#RUN wget -nv -O turbovnc.deb "https://sourceforge.net/projects/turbovnc/files/2.2.5/turbovnc_2.2.5_amd64.deb/download"
-#RUN dpkg -i turbovnc.deb
+RUN wget -nv -O turbovnc.deb "https://sourceforge.net/projects/turbovnc/files/2.2.5/turbovnc_2.2.5_amd64.deb/download"
+RUN dpkg -i turbovnc.deb
 
 
 #======================
