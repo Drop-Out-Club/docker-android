@@ -161,6 +161,11 @@ COPY devices /root/devices
 COPY config/sshd_config /etc/ssh/
 
 #===================
+# Pulseaudio config
+#===================
+COPY config/pulse_config /etc/pulse/default.pa
+
+#===================
 # Run docker-appium
 #===================
 COPY src /root/src
