@@ -61,6 +61,12 @@ elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "1620" ]]; then # 2:3 1
 	LOC_Y=-200
 	WIDTH=$(( $SCREEN_WIDTH + 500 ))
 	HEIGHT=$(( $SCREEN_HEIGHT + 800 ))
+elif [[ "$SCREEN_WIDTH" == "540" && "$SCREEN_HEIGHT" == "1128" ]]; then # 9:10 540x1128 (540x1200 with camera hole on China S30)
+	# These were discorverd by trial and error, and were only tested on a Chinese S30
+	LOC_X=-150
+	LOC_Y=-200
+	WIDTH=$(( $SCREEN_WIDTH + 850 ))
+	HEIGHT=$(( $SCREEN_HEIGHT + 9000 ))
 fi
 
 
