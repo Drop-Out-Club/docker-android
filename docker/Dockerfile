@@ -51,8 +51,9 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     lzip \
     openssh-server \
     pulseaudio \
-    alsa-utils \
     wmctrl \
+    icecast2 \
+    darkice \
  && apt-get clean all \
  && rm -rf /var/lib/apt/lists/*
 
@@ -164,6 +165,16 @@ COPY config/sshd_config /etc/ssh/
 # Pulseaudio config
 #===================
 COPY config/pulse_config /etc/pulse/default.pa
+
+#===================
+# Audio streaming config
+#===================
+COPY config/darkice.cfg /etc/darkice.cfg
+COPY config/icecast.xml /etc/icecast2/icecast.xml
+COPY config/icecast_service /etc/default/icecast2
+
+# Fix permissions
+RUN chown icecast2:icecast /etc/icecast2/icecast.xml && chmod 660 /etc/icecast2/icecast.xml
 
 #===================
 # Run docker-appium
