@@ -67,6 +67,12 @@ elif [[ "$SCREEN_WIDTH" == "540" && "$SCREEN_HEIGHT" == "1128" ]]; then # 9:10 5
 	LOC_Y=-200
 	WIDTH=$(( $SCREEN_WIDTH + 850 ))
 	HEIGHT=$(( $SCREEN_HEIGHT + 9000 ))
+elif [[ "$SCREEN_WIDTH" == "720" && "$SCREEN_HEIGHT" == "1504" ]]; then # ?:?? 720x???? (screen size without camea hole on China Note20u)
+	# These were discorverd by trial and error, and were only tested on a Chinese Note20u
+	LOC_X=-150
+	LOC_Y=-200
+	WIDTH=$(( $SCREEN_WIDTH + 650 ))
+	HEIGHT=$(( $SCREEN_HEIGHT + 1200 ))
 fi
 
 

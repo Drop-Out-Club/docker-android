@@ -17,9 +17,13 @@ elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "1620" ]]; then # 2:3 1
 elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2340" ]]; then # 9:19.5 1080x2340
 	sed 's/height 1920/height 2340/g' /root/devices/skins/nexus_5/layout > /root/devices/skins/nexus_5/layout.new
 	mv /root/devices/skins/nexus_5/layout.new.new /root/devices/skins/nexus_5/layout
-elif [[ "$SCREEN_WIDTH" == "540" && "$SCREEN_HEIGHT" == "1128" ]]; then # 9:20 540x1200
+elif [[ "$SCREEN_WIDTH" == "540" && "$SCREEN_HEIGHT" == "1128" ]]; then # 9:20 540x1200 (useable space only on China S30)
 	sed 's/height 1920/height 1128/g' /root/devices/skins/nexus_5/layout > /root/devices/skins/nexus_5/layout.new
 	sed 's/width 1080/width 540/g' /root/devices/skins/nexus_5/layout.new > /root/devices/skins/nexus_5/layout.new.new
+	mv /root/devices/skins/nexus_5/layout.new.new /root/devices/skins/nexus_5/layout
+elif [[ "$SCREEN_WIDTH" == "720" && "$SCREEN_HEIGHT" == "1504" ]]; then # ?:?? 720x???? (useable space only on China Note4u)
+	sed 's/height 1920/height 1504/g' /root/devices/skins/nexus_5/layout > /root/devices/skins/nexus_5/layout.new
+	sed 's/width 1080/width 720/g' /root/devices/skins/nexus_5/layout.new > /root/devices/skins/nexus_5/layout.new.new
 	mv /root/devices/skins/nexus_5/layout.new.new /root/devices/skins/nexus_5/layout
 fi
 
