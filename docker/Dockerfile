@@ -54,14 +54,57 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     wmctrl \
     icecast2 \
     darkice \
- && apt-get clean all \
- && rm -rf /var/lib/apt/lists/*
+ && apt-get clean all 
+ #\
+# && rm -rf /var/lib/apt/lists/*
 
 #===============
 # TurboVNC
 #===============
 RUN wget -nv -O turbovnc.deb "https://sourceforge.net/projects/turbovnc/files/2.2.5/turbovnc_2.2.5_amd64.deb/download"
 RUN dpkg -i turbovnc.deb
+
+#=============
+# Feng
+#============
+
+# Install build dependancies
+RUN apt-get -qqy install --no-install-recommends \
+    libev-dev \
+    bison \
+    flex \
+    ragel \
+    libglib2.0-dev \
+    libavformat-dev \
+    xsltproc \
+    build-essential \
+    autoconf \
+    git \
+    automake
+
+# Clone repo
+RUN git clone https://github.com/MrMcGoats/feng.git
+
+# Build
+WORKDIR /root/feng
+RUN git checkout 20a15ee7fba5cacfe5c903dde6e162831be23fa1
+RUN autoreconf -i
+RUN ./configure
+RUN make
+RUN make install
+
+# Uninstall build dependancies
+RUN apt-get -qqy remove \
+    git \
+    build-essential \
+    autoconf \
+    automake \
+ && apt-get clean all \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /root
+
+RUN ln -s /root/dump.mp3 /var/feng/avroot/dump.mp3
 
 
 #======================
