@@ -1,6 +1,6 @@
 FROM appium/appium:1.18.0-p0
 
-LABEL maintainer "Xenum Inc <support@xenum.io>"
+LABEL maintainer "Cycle Phones Inc. <support@cyclephones.com>"
 
 #=============
 # Set WORKDIR
