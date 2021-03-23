@@ -97,14 +97,6 @@ ENV PATH ${PATH}:${ANDROID_HOME}/build-tools
 RUN yes | sdkmanager --licenses && \
     sdkmanager "platforms;android-${API_LEVEL}" "system-images;android-${API_LEVEL};${IMG_TYPE};${SYS_IMG}" "emulator"
 
-#==============================================
-# Download proper version of chromedriver
-# to be able to use Chrome browser in emulator
-#==============================================
-RUN wget -nv -O chrome.zip "https://chromedriver.storage.googleapis.com/${CHROME_DRIVER}/chromedriver_linux64.zip" \
- && unzip -x chrome.zip \
- && rm chrome.zip
-
 #================================================================
 # Download Google Play Services APK and Play Store from apklinker
 #================================================================
