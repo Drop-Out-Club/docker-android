@@ -88,7 +88,7 @@ UsePAM yes
 #GatewayPorts no
 X11Forwarding no
 #X11DisplayOffset 10
-#X11UseLocalhost yes
+X11UseLocalhost no
 #PermitTTY yes
 PrintMotd no
 #PrintLastLog yes
