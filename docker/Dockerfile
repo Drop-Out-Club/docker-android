@@ -1,4 +1,4 @@
-FROM appium/appium:1.18.0-p0
+FROM appium/appium:1.20.2-p0
 
 LABEL maintainer "Cycle Phones Inc. <support@cyclephones.com>"
 
