@@ -14,7 +14,7 @@ elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2020" ]]; then # ?:?? 
 elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "1620" ]]; then # 2:3 1080:1620
 	sed 's/height 1920/height 1620/g' /root/devices/skins/nexus_5/layout > /root/devices/skins/nexus_5/layout.new
 	mv /root/devices/skins/nexus_5/layout.new /root/devices/skins/nexus_5/layout
-elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2340" ]]; then # 9:19.5 1080x2340
+elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2340" ]]; then # 6:13 1080x2340
 	sed 's/height 1920/height 2340/g' /root/devices/skins/nexus_5/layout > /root/devices/skins/nexus_5/layout.new
 	mv /root/devices/skins/nexus_5/layout.new.new /root/devices/skins/nexus_5/layout
 elif [[ "$SCREEN_WIDTH" == "540" && "$SCREEN_HEIGHT" == "1128" ]]; then # 9:20 540x1200 (useable space only on China S30)
