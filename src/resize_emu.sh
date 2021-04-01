@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
-#Wait for device to connect
-adb wait-for-device
+#Wait emulator window
+A=$(wmctrl -l | grep "nexus_5_8.1")
 
-A=$(adb shell getprop sys.boot_completed | tr -d '\r')
-
-while [ "$A" != "1" ]; do
+while [ -z "$A" ]; do
         sleep 2
-        A=$(adb shell getprop sys.boot_completed | tr -d '\r')
+	A=$(wmctrl -l | grep "nexus_5_8.1")
 done
 
 #Device is now connected
