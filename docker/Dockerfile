@@ -54,6 +54,7 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     wmctrl \
     icecast2 \
     darkice \
+    pciutils \
  && apt-get clean all 
  #\
 # && rm -rf /var/lib/apt/lists/*
@@ -92,6 +93,23 @@ RUN autoreconf -i
 RUN ./configure
 RUN make
 RUN make install
+
+#================
+# nvidia drivers
+#================
+
+ARG LOCAL_NVIDIA_PATH=./nvidia_installer.run
+
+RUN apt-get --purge remove -y nvidia*
+RUN apt-get install -qqy --no-install-recommends module-init-tools
+
+ADD $LOCAL_NVIDIA_PATH /tmp/nvidia.run
+RUN chmod +x /tmp/nvidia.run
+
+RUN /tmp/nvidia.run -s --no-kernel-module
+RUN rm -rf /tmp/selfgz7
+#RUN rm -rf /tmp/nvidia.run
+
 
 # Uninstall build dependancies
 RUN apt-get -qqy remove \
