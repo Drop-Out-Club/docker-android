@@ -221,7 +221,7 @@ RUN chmod -R +x /root/src && chmod +x /root/supervisord.conf
 #=================
 # Set system shell to custom "shell"
 #=================
-RUN chsh root -s /root/src/adb_emu.sh
+#RUN chsh root -s /root/src/adb_emu.sh
 
 #===============
 # Make empty folder to install SSH access key to
