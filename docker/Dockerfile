@@ -207,6 +207,7 @@ COPY config/pulse_config /etc/pulse/default.pa
 COPY config/darkice.cfg /etc/darkice.cfg
 COPY config/icecast.xml /etc/icecast2/icecast.xml
 COPY config/icecast_service /etc/default/icecast2
+COPY config/feng.conf /etc/feng.conf
 
 # Fix permissions
 RUN chown icecast2:icecast /etc/icecast2/icecast.xml && chmod 660 /etc/icecast2/icecast.xml
