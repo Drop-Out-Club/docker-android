@@ -26,9 +26,9 @@ Install docker-compose
 But with the current docker-compose.yml this won't do much.
 
 ### Without docker-compose
-`docker run --privileged -d -p 8200:8200 -e DEVICE="Nexus 5" -e ACCESS_KEY="<ssh public key>" -e SCREEN_WIDTH="<width in pixels>" -e SCREEN_HEIGHT="<height in pixels>" --runtime runc --name android-container cycle/docker-android-x86-8.1`
+`docker run --privileged --rm -p 8200:8200 -e DEVICE="Nexus 5" -e ACCESS_KEY="<ssh public key>" -e SCREEN_WIDTH="<width in pixels>" -e SCREEN_HEIGHT="<height in pixels>" --runtime runc --name android-container cycle/docker-android-x86-8.1`
 
-Note that if you want persistant user data you'll need to mount folders to `/root/.android` and `/root/android_emulator`
+Note that if you want persistant user data you'll need to mount folders to `/home/user/.android` and `/home/user/android_emulator`
 
 ## Connecting to container over SSH
 
@@ -40,5 +40,5 @@ The recommended way to connect to this container (assuming you're not using one 
 
 For example, if you want to use [scrcpy](https://github.com/Genymobile/scrcpy) over adb with a HTTP audio stream, you could use the following command:
 ```bash
-ssh root@$CONTAINER_IP -L 5037:localhost:5037 -R 27183:localhost:27183 -L 4000:localhost:4000 -p 8200
+ssh user@$CONTAINER_IP -L 5037:localhost:5037 -R 27183:localhost:27183 -L 4000:localhost:4000 -p 8200
 ```

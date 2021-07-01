@@ -186,11 +186,6 @@ ENV QTWEBENGINE_DISABLE_SANDBOX=1
 #===============
 EXPOSE 8200
 
-#======================
-# Add Emulator Devices
-#======================
-COPY devices /root/devices
-
 #===================
 # SSHD Config
 #===================
@@ -212,27 +207,44 @@ COPY config/feng.conf /etc/feng.conf
 # Fix permissions
 RUN chown icecast2:icecast /etc/icecast2/icecast.xml && chmod 660 /etc/icecast2/icecast.xml
 
-#===================
-# Run docker-appium
-#===================
-COPY src /root/src
-COPY supervisord.conf /root/
-RUN chmod -R +x /root/src && chmod +x /root/supervisord.conf
-
-#=================
-# Set system shell to custom "shell"
-#=================
-RUN chsh root -s /root/src/adb_emu.sh
-
-#===============
-# Make empty folder to install SSH access key to
-#================
-RUN mkdir /root/.ssh
-
 #================
 # Install system images
 #================
 #COPY system-images /root/
+
+
+COPY supervisord.conf /root/
+
+#=============================
+# Create a non-privillaged user
+#=============================
+RUN useradd user -d /home/user
+
+#===================
+# Run docker-appium
+#===================
+COPY src /home/user/src
+RUN chmod -R +x /home/user/src && chmod +x /root/supervisord.conf
+
+#=================
+# Set system shell to custom "shell"
+#=================
+RUN chsh user -s /home/user/src/adb_emu.sh
+
+#===============
+# Make empty folder to install SSH access key to
+#================
+RUN mkdir /home/user/.ssh
+
+#======================
+# Add Emulator Devices
+#======================
+COPY devices /home/user/devices
+
+#==============================
+# Change ownership of /home/user/**
+#=============================
+RUN chown -R user:user /home/user
 
 HEALTHCHECK --interval=2s --timeout=40s --retries=1 \
     CMD timeout 40 adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done'

@@ -2,29 +2,29 @@
 
 # Changes the resolution of the emulator (not the window, but the actual phone that's being emulated)
 if [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2236" ]]; then # 9:19 1080x2280 (usable space only on Pixel 4)
-	sed 's/height 1920/height 2236/g' /root/devices/skins/nexus_5/layout > /root/devices/skins/nexus_5/layout.new
-	mv /root/devices/skins/nexus_5/layout.new /root/devices/skins/nexus_5/layout
+	sed 's/height 1920/height 2236/g' /home/user/devices/skins/nexus_5/layout > /home/user/devices/skins/nexus_5/layout.new
+	mv /home/user/devices/skins/nexus_5/layout.new /home/user/devices/skins/nexus_5/layout
 elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "1920" ]]; then # 9:16 720x1280
-	sed 's/height 1920/height 1280/g' /root/devices/skins/nexus_5/layout > /root/devices/skins/nexus_5/layout.new
-	sed 's/width 1080/width 720/g' /root/devices/skins/nexus_5/layout.new > /root/devices/skins/nexus_5/layout.new.new
-	mv /root/devices/skins/nexus_5/layout.new.new /root/devices/skins/nexus_5/layout
+	sed 's/height 1920/height 1280/g' /home/user/devices/skins/nexus_5/layout > /home/user/devices/skins/nexus_5/layout.new
+	sed 's/width 1080/width 720/g' /home/user/devices/skins/nexus_5/layout.new > /home/user/devices/skins/nexus_5/layout.new.new
+	mv /home/user/devices/skins/nexus_5/layout.new.new /home/user/devices/skins/nexus_5/layout
 elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2020" ]]; then # ?:?? 1080x2020
-	sed 's/height 1920/height 2020/g' /root/devices/skins/nexus_5/layout > /root/devices/skins/nexus_5/layout.new
-	mv /root/devices/skins/nexus_5/layout.new /root/devices/skins/nexus_5/layout
+	sed 's/height 1920/height 2020/g' /home/user/devices/skins/nexus_5/layout > /home/user/devices/skins/nexus_5/layout.new
+	mv /home/user/devices/skins/nexus_5/layout.new /home/user/devices/skins/nexus_5/layout
 elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "1620" ]]; then # 2:3 1080:1620
-	sed 's/height 1920/height 1620/g' /root/devices/skins/nexus_5/layout > /root/devices/skins/nexus_5/layout.new
-	mv /root/devices/skins/nexus_5/layout.new /root/devices/skins/nexus_5/layout
+	sed 's/height 1920/height 1620/g' /home/user/devices/skins/nexus_5/layout > /home/user/devices/skins/nexus_5/layout.new
+	mv /home/user/devices/skins/nexus_5/layout.new /home/user/devices/skins/nexus_5/layout
 elif [[ "$SCREEN_WIDTH" == "1080" && "$SCREEN_HEIGHT" == "2340" ]]; then # 6:13 1080x2340
-	sed 's/height 1920/height 2340/g' /root/devices/skins/nexus_5/layout > /root/devices/skins/nexus_5/layout.new
-	mv /root/devices/skins/nexus_5/layout.new.new /root/devices/skins/nexus_5/layout
+	sed 's/height 1920/height 2340/g' /home/user/devices/skins/nexus_5/layout > /home/user/devices/skins/nexus_5/layout.new
+	mv /home/user/devices/skins/nexus_5/layout.new.new /home/user/devices/skins/nexus_5/layout
 elif [[ "$SCREEN_WIDTH" == "540" && "$SCREEN_HEIGHT" == "1128" ]]; then # 9:20 540x1200 (useable space only on China S30)
-	sed 's/height 1920/height 1128/g' /root/devices/skins/nexus_5/layout > /root/devices/skins/nexus_5/layout.new
-	sed 's/width 1080/width 540/g' /root/devices/skins/nexus_5/layout.new > /root/devices/skins/nexus_5/layout.new.new
-	mv /root/devices/skins/nexus_5/layout.new.new /root/devices/skins/nexus_5/layout
+	sed 's/height 1920/height 1128/g' /home/user/devices/skins/nexus_5/layout > /home/user/devices/skins/nexus_5/layout.new
+	sed 's/width 1080/width 540/g' /home/user/devices/skins/nexus_5/layout.new > /home/user/devices/skins/nexus_5/layout.new.new
+	mv /home/user/devices/skins/nexus_5/layout.new.new /home/user/devices/skins/nexus_5/layout
 elif [[ "$SCREEN_WIDTH" == "720" && "$SCREEN_HEIGHT" == "1504" ]]; then # ?:?? 720x???? (useable space only on China Note4u)
-	sed 's/height 1920/height 1504/g' /root/devices/skins/nexus_5/layout > /root/devices/skins/nexus_5/layout.new
-	sed 's/width 1080/width 720/g' /root/devices/skins/nexus_5/layout.new > /root/devices/skins/nexus_5/layout.new.new
-	mv /root/devices/skins/nexus_5/layout.new.new /root/devices/skins/nexus_5/layout
+	sed 's/height 1920/height 1504/g' /home/user/devices/skins/nexus_5/layout > /home/user/devices/skins/nexus_5/layout.new
+	sed 's/width 1080/width 720/g' /home/user/devices/skins/nexus_5/layout.new > /home/user/devices/skins/nexus_5/layout.new.new
+	mv /home/user/devices/skins/nexus_5/layout.new.new /home/user/devices/skins/nexus_5/layout
 fi
 
 types=($TYPES)
@@ -273,7 +273,7 @@ resource "aws_instance" "geny_aws_$index" {
 			private_key = "\${file("~/.ssh/id_rsa")}"
 		}
 
-		script = "/root/enable_adb.sh"
+		script = "/home/user/enable_adb.sh"
     }
 }
 
@@ -282,18 +282,18 @@ output "public_dns_$index" {
 }
 _EOF
 )
-		echo "$aws_tf_content" > /root/aws_tf_$index.tf
+		echo "$aws_tf_content" > /home/user/aws_tf_$index.tf
 
 		if [[ $ami != null ]]; then
 			echo "Using given AMI!"
-			sed -i "s/.*ami=.*/        ami=\"$ami\"/g" /root/aws_tf_$index.tf
+			sed -i "s/.*ami=.*/        ami=\"$ami\"/g" /home/user/aws_tf_$index.tf
 		else
 			echo "Custom AMI is not found. It will use the latest AMI!"
 		fi
 
 		if [[ $sg != null ]] && [[ $is_array == "false" ]]; then
 			echo "Using given security group: $sg"
-			sed -i "s/.*vpc_security_group_ids=.*/        vpc_security_group_ids=[\"$sg\"]/g" /root/aws_tf_$index.tf
+			sed -i "s/.*vpc_security_group_ids=.*/        vpc_security_group_ids=[\"$sg\"]/g" /home/user/aws_tf_$index.tf
 		fi
 
 		echo "---------------------------------------------------------"
@@ -328,8 +328,8 @@ function run_appium() {
 	echo "Preparing appium-server..."
 	CMD="appium --log $APPIUM_LOG"
 	if [ "$CONNECT_TO_GRID" = true ]; then
-		NODE_CONFIG_JSON="/root/src/nodeconfig.json"
-		/root/generate_config.sh $NODE_CONFIG_JSON
+		NODE_CONFIG_JSON="/home/user/src/nodeconfig.json"
+		/home/user/generate_config.sh $NODE_CONFIG_JSON
 		CMD+=" --nodeconfig $NODE_CONFIG_JSON"
   	fi
 
