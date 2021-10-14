@@ -65,6 +65,46 @@ RUN wget -nv -O turbovnc.deb "https://sourceforge.net/projects/turbovnc/files/2.
 RUN dpkg -i turbovnc.deb
 
 #=============
+# scrcpy
+#============
+
+# Install build dependancies
+RUN apt-get -qqy install --no-install-recommends \
+    ffmpeg \
+    libsdl2-2.0-0 \
+    wget \
+    gcc \
+    git \
+    pkg-config \
+    ninja-build \
+    libsdl2-dev \
+    libavcodec-dev \
+    libavdevice-dev \
+    libavformat-dev \
+    libavutil-dev \
+    python3-pip \
+    python3-setuptools \
+    sudo
+
+RUN python3 -m pip install meson
+
+RUN git clone https://github.com/Genymobile/scrcpy
+
+WORKDIR /root/scrcpy
+# Make sure we use the same version every time we build this container
+RUN git checkout 96e3963afceb526cef8c099060ef32856180b0b2
+RUN ./install_release.sh
+
+WORKDIR /root
+
+# Uninstall build dependancies
+RUN env SUDO_FORCE_REMOVE=yes apt-get -qqy remove \
+    ninja-build \
+    python3-pip \
+    python3-setuptools \
+    sudo
+
+#=============
 # Feng
 #============
 
@@ -79,7 +119,6 @@ RUN apt-get -qqy install --no-install-recommends \
     xsltproc \
     build-essential \
     autoconf \
-    git \
     automake
 
 # Clone repo
@@ -164,7 +203,7 @@ ENV DISPLAY=:0 \
 # Update the openbox configuration files to:
 #   + Use a single virtual desktop to prevent accidentally switching 
 #================================================
-COPY config/rc.xml /etc/xdg/openbox/rc.xml
+#COPY config/rc.xml /etc/xdg/openbox/rc.xml
 
 #============
 # Open GApps
@@ -222,7 +261,7 @@ RUN chmod -R +x /root/src && chmod +x /root/supervisord.conf
 #=================
 # Set system shell to custom "shell"
 #=================
-RUN chsh root -s /root/src/adb_emu.sh
+#RUN chsh root -s /root/src/adb_emu.sh
 
 #===============
 # Make empty folder to install SSH access key to
