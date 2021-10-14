@@ -13,4 +13,4 @@ done
 #Device is now connected
 
 # start scrcpy
-ADB=/root/platform-tools/adb scrcpy -Swf --render-driver=software
+ADB=/root/platform-tools/adb scrcpy -wf --render-driver=software --lock-video-orientation=0 -m $1
